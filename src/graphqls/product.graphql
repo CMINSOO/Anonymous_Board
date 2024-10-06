@@ -1,24 +1,24 @@
 interface Product {
   id: ID!
-  name: string!
+  name: String!
   price: Float!
   productType: ProductType!
 }
 
 type Electronics implements Product {
   id: ID!
-  name: string!
+  name: String!
   price: Float!
   productType: ProductType!
-  warrantyPeriod: string!
+  warrantyPeriod: String!
 }
 
 type Clothing implements Product {
   id: ID!
-  name: string!
+  name: String!
   price: Float!
   productType: ProductType!
-  size: string!
+  size: String!
 }
 
 enum ProductType {

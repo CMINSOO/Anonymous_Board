@@ -7,7 +7,7 @@ type CartItem {
 type Cart {
   id: ID!
   user: User!
-  items: [CartItems!]!
+  items: [CartItem!]!
   totalAmount: Float!
 }
 
@@ -17,7 +17,7 @@ input AddCartItemInput {
   quantity: Int!
 }
 
-input deleteCartItemInput {
+input DeleteCartItemInput {
   cartItemId: ID!
   userId: ID!
 }

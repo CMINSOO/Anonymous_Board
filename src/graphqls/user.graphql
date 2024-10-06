@@ -2,8 +2,8 @@ scalar DateTime
 
 type User {
   id: ID!
-  email: string!
-  name: string!
+  email: String!
+  name: String!
   cart: Cart!
   createAt: DateTime!
 }
