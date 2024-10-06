@@ -1,0 +1,10 @@
+type Mutation {
+  #회원 추가 뮤테
+  addUser(addUserInput: AddUserInput!): User!
+  # 제품 추가 뮤테
+  addProduct(addProductInput: AddProductInput!): Product!
+  # 카트에 아이템추가 뮤테
+  addCartItem(addCartItemInput: AddCartItemInput): Cart!
+  # 카트 아이템 지우기 뮤테
+  deleteCartItem(deleteCartItemInput: DeleteCartItemInput): Cart!
+}

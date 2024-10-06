@@ -9,6 +9,8 @@ import { ConfigModule } from '@nestjs/config';
 import { typeOrmModuleOption } from './configs/database.config';
 import Joi from 'joi';
 import { ApolloDriver } from '@nestjs/apollo';
+import { CartModule } from './cart/cart.module';
+import { ProductModule } from './product/product.module';
 
 @Module({
   imports: [
@@ -25,6 +27,8 @@ import { ApolloDriver } from '@nestjs/apollo';
       driver: ApolloDriver,
     }),
     TypeOrmModule.forRootAsync(typeOrmModuleOption),
+    CartModule,
+    ProductModule,
   ],
   controllers: [AppController],
   providers: [AppService],

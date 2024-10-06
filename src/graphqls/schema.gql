@@ -1,0 +1,106 @@
+# 문서화 하기 위해 파일확장자를 gql로 작성했음
+# 작성한 모든 graphql문서 스키마 들을 다 여기에 복붙하면됨
+
+input AddUserInput {
+  name: String!
+  email: String!
+}
+
+type CartItem {
+  id: ID!
+  product: Product!
+  quantity: Int!
+}
+
+type Cart {
+  id: ID!
+  user: User!
+  items: [CartItems!]!
+  totalAmount: Float!
+}
+
+input AddCartItemInput {
+  userId: ID!
+  productId: ID!
+  quantity: Int!
+}
+
+input deleteCartItemInput {
+  cartItemId: ID!
+  userId: ID!
+}
+
+type Mutation {
+  #회원 추가 뮤테
+  addUser(addUserInput: AddUserInput!): User!
+  # 제품 추가 뮤테
+  addProduct(addProductInput: AddProductInput!): Product!
+  # 카트에 아이템추가 뮤테
+  addCartItem(addCartItemInput: AddCartItemInput): Cart!
+  # 카트 아이템 지우기 뮤테
+  deleteCartItem(deleteCartItemInput: DeleteCartItemInput): Cart!
+}
+
+interface Product {
+  id: ID!
+  name: string!
+  price: Float!
+  productType: ProductType!
+}
+
+type Electronics implements Product {
+  id: ID!
+  name: string!
+  price: Float!
+  productType: ProductType!
+  warrantyPeriod: string!
+}
+
+type Clothing implements Product {
+  id: ID!
+  name: string!
+  price: Float!
+  productType: ProductType!
+  size: string!
+}
+
+enum ProductType {
+  Electronics
+  Clothing
+}
+
+input AddProductInput {
+  price: Float!
+  name: String!
+  productType: ProductType!
+  warrantyPeriod: String
+  size: String
+}
+
+# 쿼리 스키마정의
+type Query {
+  # 유저정보 조회 쿼리
+  getUser(userId: ID!): User!
+  #재품목록 조회 쿼리
+  getProduct: [Product!]!
+  #내 장바구니 조회
+  getUserCart(userId: ID!): Cart!
+  #검색 쿼리
+  search(keyword: String!): [SearchResult!]!
+}
+
+union SearchResult = User | Electronics | Clothing
+
+type Subscription {
+  newProduct(productName: String): Product!
+}
+
+scalar DateTime
+
+type User {
+  id: ID!
+  email: string!
+  name: string!
+  cart: Cart!
+  createAt: DateTime!
+}
