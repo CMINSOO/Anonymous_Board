@@ -32,6 +32,9 @@ input DeleteCartItemInput {
 
 type Mutation {
   #회원 추가 뮤테
+  """
+  주석 차이 확인용
+  """
   addUser(addUserInput: AddUserInput!): User!
   # 제품 추가 뮤테
   addProduct(addProductInput: AddProductInput!): Product!

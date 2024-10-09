@@ -17,6 +17,8 @@ async function bootstrap() {
   );
 
   const port = configService.get<number>('PORT');
-  await app.listen(port);
+  await app.listen(port, () => {
+    console.log(`${port}에서 서버 실행중`);
+  });
 }
 bootstrap();
