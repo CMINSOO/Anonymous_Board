@@ -82,6 +82,7 @@ input AddProductInput {
 
 # 쿼리 스키마정의
 type Query {
+  getAllUser: [User]!
   # 유저정보 조회 쿼리
   getUser(userId: ID!): User!
   #재품목록 조회 쿼리
