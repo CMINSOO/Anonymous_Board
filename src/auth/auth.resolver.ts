@@ -4,6 +4,8 @@ import { CreateAuthInput } from './dto/create-auth.input';
 import { User } from 'src/user/entities/user.entity';
 import { SignInInput } from './dto/sign-in.input';
 import { AuthPayload } from './object-types/auth-payload.type';
+import { UseGuards } from '@nestjs/common';
+import { JwtAuthGuard } from './guards/jwt.guard';
 
 @Resolver(() => User)
 export class AuthResolver {
@@ -16,8 +18,9 @@ export class AuthResolver {
   }
 
   //전체유저 조회
+  @UseGuards(JwtAuthGuard)
   @Query(() => [User], { name: 'users' })
-  getAllUser() {
+  getAllUser(): Promise<User[]> {
     return this.authService.findAllUser();
   }
 

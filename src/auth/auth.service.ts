@@ -66,7 +66,6 @@ export class AuthService {
         email,
       },
     });
-    console.log(user);
     if (!user) {
       throw new NotFoundError('존재하지 않은 유저입니다');
     }
@@ -88,6 +87,16 @@ export class AuthService {
     });
 
     return accessToken;
+  }
+
+  async findById(userId: number) {
+    const user = await this.userRepository.findOne({
+      where: { id: userId },
+    });
+    if (!user) {
+      throw new UnauthorizedException('접근 오류');
+    }
+    return user;
   }
 
   // update(id: number, updateAuthInput: UpdateAuthInput) {
