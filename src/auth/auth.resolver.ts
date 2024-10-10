@@ -24,6 +24,7 @@ export class AuthResolver {
     return this.authService.findAllUser();
   }
 
+  //로그인
   @Mutation(() => AuthPayload, { name: 'signIn' })
   async signIn(
     @Args('signInInput') signInInput: SignInInput,
@@ -34,14 +35,4 @@ export class AuthResolver {
       token: data.token,
     };
   }
-
-  // @Mutation('updateAuth')
-  // update(@Args('updateAuthInput') updateAuthInput: UpdateAuthInput) {
-  //   return this.authService.update(updateAuthInput.id, updateAuthInput);
-  // }
-
-  // @Mutation('removeAuth')
-  // remove(@Args('id') id: number) {
-  //   return this.authService.remove(id);
-  // }
 }

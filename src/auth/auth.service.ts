@@ -98,12 +98,4 @@ export class AuthService {
     }
     return user;
   }
-
-  // update(id: number, updateAuthInput: UpdateAuthInput) {
-  //   return `This action updates a #${id} auth`;
-  // }
-
-  // remove(id: number) {
-  //   return `This action removes a #${id} auth`;
-  // }
 }
